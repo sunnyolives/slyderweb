@@ -110,66 +110,8 @@
 
 </body>
 
-<!--
-<script>
-	
-	// modalstuff init
-	let modal_signIn = document.getElementById('modal_signIn');
-	let modal_createUser = document.getElementById('modal_createUser');
-	let currentOpenElement;
-	let cancel_btn = document.getElementById("cancel_btn");
-	
-	// Get the <span> elements that closes the modal
-		let span = document.getElementsByClassName("close");
-	
-	// Close when span x is clicked
-		document.addEventListener('click', e => {
-			for (item of span) {
-			if (item.style.display != 'none') {
-				if (e.target == item) {
-					while (item != null && item.classList != 'modal') {
-						item = item.parentElement;
-					}
-					
-					if (item.classList == 'modal') {
-						item.style.display = 'none';
-					}
-				}
-			}
-		}
-	});
-	
-	cancel_btn.onclick = console.log("knapp");
-	
-	//for styling av modal
-	//modal_signIn.style.display = "block";
-	//modal_createUser.style.display = "block"
-	
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function (event) {
-		if (event.target == modal_signIn) {
-			modal_signIn.style.display = "none";
-		} else if (event.target == modal_createUser) {
-			modal_createUser.style.display = "none";
-		}
-	}
-
-	function openElement(element) {
-		currentOpenElement = element.name;
-		console.log(currentOpenElement);
-		eval(currentOpenElement).style.display = "block"
-	}
-
-	function closeElement() {
-		console.log("Closed element");
-		eval(currentOpenElement).style.display = "none";
-	}
-
-</script>  -->
-
 <script type="text/javascript" src="./js/util.js"></script>
 <script type="text/javascript" src="./js/main.js"></script>
-<script type="text/javascript" src="./js/modals.js"></script>
 <script type="text/javascript" src="./js/sha1.min.js"></script>
 
 </html>

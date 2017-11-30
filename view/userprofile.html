@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>Slyderweb - user</title>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <title>Slyderweb - Userprofile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
@@ -11,32 +11,33 @@
   <!--    <link rel="stylesheet" type="text/css" href="./css/main.css" />
     <link rel="stylesheet" type="text/css" href="./css/index.css" /> -->
   <link href="./css/userprofile.css" rel="stylesheet">
+  <link href="./css/main.css" rel="stylesheet">
+  <link href="./css/userprofile.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
 </head>
 
 <body>
 
+  <header class="centered colorScheme">
+    <nav>
+      <menuitem class="logo">
+      <a href="/">SlyderWeb</a>
+      </menuitem>
+      <menuitem class="signInOut">
+      <a id="hrfSignIn" class="modalLink" name="modal_signIn" onclick="modalstuff.openElement(this)">Sign in</a>
+      <a id="hrfSignOut" href="user/logout">Sign out</a>
+      </menuitem>
+      <menuitem>
+      <a href="editor">Editor</a>
+      </menuitem>
+      <menuitem>
+      <a id="hrfSignUp" class="modalLink" name="modal_createUser" onclick="modalstuff.openElement(this)">Sign up</a>
+      <a id="hrfProfile" href="userprofile">Profile</a>
+      </menuitem>
+    </nav>
+  </header>
+
   <main id="profile-root">
-
-    <header class="centered colorScheme">
-      <nav>
-        <menuitem class="logo">
-        <a href="/">SlyderWeb</a>
-        </menuitem>
-        <menuitem class="signInOut">
-        <a id="hrfSignIn" class="modalLink" name="modal_signIn" onclick="modalstuff.openElement(this)">Sign in</a>
-        <a id="hrfSignOut" href="user/logout">Sign out</a>
-        </menuitem>
-        <menuitem>
-        <a href="editor">Editor</a>
-        </menuitem>
-        <menuitem>
-        <a id="hrfSignUp" class="modalLink" name="modal_createUser" onclick="modalstuff.openElement(this)">Sign up</a>
-        <a id="hrfProfile" href="userprofile">Profile</a>
-        </menuitem>
-      </nav>
-    </header>
-
 
     <section id="profile-controls">
       <div>
@@ -44,12 +45,16 @@
       </div>
       <nav>
         <a href="#slides" class="menu-item">Presentations</a>
+        <hr>
+        <hr>
         <a href="#setting" class="menu-item">Setting</a>
+        <hr>
+        <hr>
       </nav>
     </section>
 
     <section id="page-slides" class="page">
-      <header>
+      <header class="header-userprofile">
         <h1>Slides</h1>
       </header>
       <div id="page-slides-root">
@@ -59,55 +64,55 @@
     </section>
 
     <section id="page-setting" class="page">
-      <header>
-        <h1>Settings</h1>
-      </header>
-      <div>
-        <!-- CONTENT -->
-        <form>
-          <label> Change first name
-            <input id="firstname" type="text" />
-          </label>
-          <label> Change last name:
-            <input id="lastname" type="text" />
-          </label>
-          <label> Username:
-            <input id="username" type="text" disabled />
-          </label>
-          <label> Email:
-            <input id="email" type="email" disabled />
-          </label>
+          <header class="header-userprofile">
+            <h1>Settings</h1>
+          </header>
+          <div class="page-settings-root">
+            <!-- CONTENT -->
+            <form>
+              <label> Change first name
+                <input id="firstname" type="text" />
+              </label>
+              <label> Change last name:
+                <input id="lastname" type="text" />
+              </label>
+              <label> Username:
+                <input id="username" type="text" disabled />
+              </label>
+              <label> Email:
+                <input id="email" type="email" disabled />
+              </label>
 
-          <!-- TODO: Gamle profilbilde skal være synlig -->
-          <img src="" alt="">
-          <label> Change image:
-            <input id="image" type="url" />
-          </label>
+              <!-- TODO: Gamle profilbilde skal være synlig -->
+              <img src="" alt="">
+              <label> Change image:
+                <input id="image" type="url" />
+              </label>
 
-          <!-- TODO: Gamle profilbilde skal være synlig -->
-          <!--<img src="" alt="">
+              <!-- TODO: Gamle profilbilde skal være synlig -->
+              <!--<img src="" alt="">
           <label> Change image:
           <input id="image"     type="file" /></label>-->
 
-          <button id="saveChanges" type="button">Save changes</button>
-        </form>
-        <hr>
-        <form>
-          <label> Type in old password:
-            <input id="password_old" type="password" />
-          </label>
-          <label> Type in new password:
-            <input id="password_new" type="password" />
-          </label>
-          <label> Repeat new password:
-            <input id="password_new_repeat" type="password" />
-          </label>
-          <button id="save_password" type="button">Save changes</button>
-        </form>
-        <hr>
-        <button id="btnDelete" type="button">Delete profile</button>
-      </div>
-      <!-- CONTENT - END -->
+              <button id="saveChanges" type="button">Save changes</button>
+            </form>
+            <hr>
+            <form>
+              <label> Type in old password:
+                <input id="password_old" type="password" />
+              </label>
+              <label> Type in new password:
+                <input id="password_new" type="password" />
+              </label>
+              <label> Repeat new password:
+                <input id="password_new_repeat" type="password" />
+              </label>
+              <button id="save_password" type="button">Save changes</button>
+            </form>
+            <hr>
+            <button id="btnDelete" type="button">Delete profile</button>
+          </div>
+          <!-- CONTENT - END -->
     </section>
 
   </main>
@@ -161,7 +166,7 @@
   <script src="./js/userprofile/slides.js"></script>
   <script src="./js/userprofile/settings.js"></script>
   <script src="./js/userprofile.js"></script>
-  <script type="text/javascript" src="./js/modals.js"></script>
+  <script type="text/javascript" src="./js/main.js"></script>
 </body>
 
 </html>

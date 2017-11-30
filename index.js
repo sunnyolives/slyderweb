@@ -51,22 +51,6 @@ app.get('/userprofile', (req, res) => {
     res.sendFile(appRoot + '/view/userprofile.html');
 });
 
-app.get('/help', (req, res) => {
-    res.sendFile(appRoot + '/view/help.html');
-});
-
-app.get('/about', (req, res) => {
-    res.sendFile(appRoot + '/view/about.html');
-});
-
-app.get('/login', (req, res) => {
-    res.sendFile(appRoot + '/view/login.html');
-});
-
-app.get('/signup', (req, res) => {
-    res.sendFile(appRoot + '/view/signup.html');
-});
-
 // Post
 app.post('/user', db.newUser, ut.logEvent);
 app.post('/user/login', db.loginUser, ut.logEvent, db.setLastlogin, ut.logEvent);
