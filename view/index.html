@@ -16,21 +16,21 @@
 			<a href="/">SlyderWeb</a>
 			</menuitem>
 			<menuitem class="signInOut">
-			<a id="hrfSignIn" href="login">Sign in</a>
+			<a id="hrfSignIn" class="modalLink" name="modal_signIn" onclick="modalstuff.openElement(this)">Sign in</a>
 			<a id="hrfSignOut" href="user/logout">Sign out</a>
 			</menuitem>
 			<menuitem>
 			<a href="editor">Editor</a>
 			</menuitem>
 			<menuitem>
-			<a id="hrfSignUp" href="signup">Sign up</a>
+			<a id="hrfSignUp" class="modalLink" name="modal_createUser" onclick="modalstuff.openElement(this)">Sign up</a>
 			<a id="hrfProfile" href="userprofile">Profile</a>
 			</menuitem>
 		</nav>
 	</header>
 
 	<main>
-		<section class="textContainer">
+		<section class="textContainer centered">
 			<h1>SlyderWeb - a browser presentation tool</h1>
 			<h2>Make presentations online - and offline!</h2>
 			<h3>Header 3</h3>
@@ -39,8 +39,7 @@
 			<button>
 				<a class="noLinkStyle" href="/editor">Try now</a>
 			</button>
-			<button id="openCreateUserModalbtn">Sign up</button>
-			<button id="openSignInModalbtn">Sign in</button>
+			<button id="openCreateUserModalbtn" name="modal_createUser" onclick="modalstuff.openElement(this)">Sign up</button>
 		</section>
 		</div>
 		<div class="colored3">
@@ -66,18 +65,19 @@
 
 	<!-- Sign in modal -->
 
-	<div id="modal_signIn" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
+	<div id="modal_signIn" class="modalmain">
+		<div class="modalmain-content">
+			<span class="close" name="close">&times;</span>
 			<fieldset>
 				<h3 class="modal-header">Sign in</h3>
-				<hr>
 				<div class="modal-body centered">
 					<input type="text" id="login_username" placeholder="Username">
 					<br>
 					<input type="text" id="login_password" placeholder="Password">
 					<br>
-					<button id="login_btn">Sign in</button>
+					<div class="modal-footer">
+						<button id="login_btn">Sign in</button>
+					</div>
 				</div>
 		</div>
 	</div>
@@ -85,11 +85,10 @@
 
 	<!-- Sign up modal -->
 
-	<div id="modal_createUser" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
+	<div id="modal_createUser" class="modalmain">
+		<div class="modalmain-content">
+			<span class="close" name="close">&times;</span>
 			<h3 class="modal-header">Create new user</h3>
-			<hr>
 			<div class="modal-body centered">
 				<p class="neutralText">Username</p>
 				<input type="text" id="createuser_username" placeholder="username">
@@ -102,54 +101,50 @@
 				<p class="neutralText">E-mail address:</p>
 				<input type="text" id="createuser_mail" placeholder="email">
 				<br>
-				<button id="createuser_btn">Create user</button>
-				<button id="cancel_btn">Cancel</button>
+				<div class="modal-footer">
+					<button id="createuser_btn">Create user</button>
+				</div>
 			</div>
 		</div>
 	</div>
 
-
 </body>
 
+<!--
 <script>
-	// Get the modal
+	
+	// modalstuff init
 	let modal_signIn = document.getElementById('modal_signIn');
 	let modal_createUser = document.getElementById('modal_createUser');
-
-	// Get the button that opens the modal
-	let openSignInModalbtn = document.getElementById("openSignInModalbtn");
-	let openCreateUserModalbtn = document.getElementById("openCreateUserModalbtn");
+	let currentOpenElement;
 	let cancel_btn = document.getElementById("cancel_btn");
-
-	// Get the <span> element that closes the modal
-	let span = document.getElementsByClassName("close")[0];
-	let spanTwo = document.getElementsByClassName("close")[1];
-
+	
+	// Get the <span> elements that closes the modal
+		let span = document.getElementsByClassName("close");
+	
+	// Close when span x is clicked
+		document.addEventListener('click', e => {
+			for (item of span) {
+			if (item.style.display != 'none') {
+				if (e.target == item) {
+					while (item != null && item.classList != 'modal') {
+						item = item.parentElement;
+					}
+					
+					if (item.classList == 'modal') {
+						item.style.display = 'none';
+					}
+				}
+			}
+		}
+	});
+	
+	cancel_btn.onclick = console.log("knapp");
+	
 	//for styling av modal
 	//modal_signIn.style.display = "block";
-
-	// When the user clicks on the button, open the modal 
-	//openSignInModalbtn.onclick = openModal(modal_SignIn);
-	openSignInModalbtn.onclick = function () {
-		modal_signIn.style.display = "block";
-	}
-	openCreateUserModalbtn.onclick = function () {
-		modal_createUser.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-
-	cancel_btn.onclick = function () {
-		modal_createUser.style.display = "none";
-	}
-
-	span.onclick = function () {
-		modal_signIn.style.display = "none";
-	}
-	spanTwo.onclick = function () {
-		modal_createUser.style.display = "none";
-	}
-
+	//modal_createUser.style.display = "block"
+	
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function (event) {
 		if (event.target == modal_signIn) {
@@ -159,10 +154,22 @@
 		}
 	}
 
-</script>
+	function openElement(element) {
+		currentOpenElement = element.name;
+		console.log(currentOpenElement);
+		eval(currentOpenElement).style.display = "block"
+	}
+
+	function closeElement() {
+		console.log("Closed element");
+		eval(currentOpenElement).style.display = "none";
+	}
+
+</script>  -->
 
 <script type="text/javascript" src="./js/util.js"></script>
 <script type="text/javascript" src="./js/main.js"></script>
+<script type="text/javascript" src="./js/modals.js"></script>
 <script type="text/javascript" src="./js/sha1.min.js"></script>
 
 </html>

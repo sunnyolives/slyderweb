@@ -24,6 +24,7 @@ body {
 	background:white url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVQoU2NkwA6kGBgYniFLMaKpQ1aAohhdIbr5cMUwhRhWoesAKSSoCKSGkNVwg4mxGmwjySbCrCA5eDA8CAAGVAslgCPX9wAAAABJRU5ErkJggg==) repeat;
 	font-family: 'Lato', 'Verdana', sans-serif;
 	font-size: 1.6rem; /* this sets the baseline size. Header sizes are then set by ems in browser*/
+	overflow: hidden;
 }
 
 /* main {} */
@@ -91,12 +92,12 @@ logo a {color: white;}
 button {
 	color: #000;
 	background-color: #ccc;
-	padding: 0.4rem 1.0rem;
-	margin: 0.2rem 0.07rem;
+	padding: 0.4rem 1.2rem;
+	margin: 0.2rem 0.5rem;
 	font-size:0.9em;
 	border-radius: 4px;
 	border-style: none;
-	box-shadow: 0 0 1px 1px gray;
+	box-shadow: 0 0 4px 1px gray;
 }
 
 button:hover {
@@ -107,7 +108,6 @@ button:hover {
 button:active {
 	color: #fff;
 	background-color: olive;
-	margin: 0.2em;
 }
 
 button.dark {
@@ -177,8 +177,12 @@ ul.hidden { padding-left: 0; list-style: none;}
 
 /* Modals */
 
+.modalLink {
+	cursor: pointer;
+}
+
 /* The Modal (background) */
-.modal {
+.modalmain {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -192,12 +196,13 @@ ul.hidden { padding-left: 0; list-style: none;}
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modalmain-content {
     background-color: #fefefe;
     margin: 20% auto; /* 15% from the top and centered */
-    /*border: 1px solid #888;*/
-	width: 80%; /* Could be more or less, depending on screen size */
-	max-width: 500px;
+	padding: 10px;
+	border: 1px solid #888;
+	width: 60%; /* Could be more or less, depending on screen size */
+	max-width: 400px;
 }
 
 .modal-header { 
@@ -209,14 +214,34 @@ ul.hidden { padding-left: 0; list-style: none;}
 	padding: 6px 20px;
 }
 
+.modal-footer {
+	padding-top: 6px;
+}
+
 .modal-closed {
 	display: none;
 }
+
+#cancel_btn {
+	background: rgb(196, 148, 148);
+}
+
+#cancel_btn:hover {
+	background-color: #f1f1da;
+	cursor: pointer;
+	}
+	
+#cancel_btn:active {
+	color: #fff;
+	background-color: red;
+	}
 
 /* The Close Button */
 .close {
     color: #aaa;
 	float: right;
+	margin-right: 0px;
+	margin-top: -10px;
     font-size: 28px;
     font-weight: bold;
 }
@@ -228,21 +253,3 @@ ul.hidden { padding-left: 0; list-style: none;}
     cursor: pointer;
 }
 
-#createuser_btn {
-	float: left;
-	background: green;
-	width: 50%;
-	border-radius: none;
-}
-
-#cancel_btn {
-	border-radius: none;
-	width: 49%;	
-	float: right;
-	background: red;
-}
-
-#login_btn {
-	background: olive;
-	color: white;
-}
